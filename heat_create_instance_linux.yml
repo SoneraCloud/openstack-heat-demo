@@ -42,6 +42,23 @@ parameters:
     - custom_constraint: neutron.network
     default:
 
+
+  floating_ip_pool:
+    type: string
+    description: Name of the floating-IP pool from where the IP is allocated
+    default: ext-net
+
+parameter_groups:
+- label: Instance parameters
+  parameters:
+  - instance_name
+  - flavor_name
+  - image_name
+  - key_name
+  - security_group
+  - network_name
+  - floating_ip_pool
+  
 resources:
   my_instance:
     type: OS::Nova::Server
@@ -53,6 +70,17 @@ resources:
       security_groups: [{ get_param: security_group }]
       networks:
         - {network: { get_param: network_name }}
+
+  floating_ip:
+    type: OS::Nova::FloatingIP
+    properties:
+      pool: {get_param: floating_ip_pool}
+      
+  association:
+    type: OS::Nova::FloatingIPAssociation
+    properties:
+      floating_ip: { get_resource: floating_ip }
+      server_id: { get_resource: my_instance }
 
 
 
