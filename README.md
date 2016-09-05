@@ -17,7 +17,10 @@ The stacks are managed in Horizon GUI via <I>Project->Orchestration->Stacks</I> 
 Deploying via CLI is done with "heat stack-create" command. Note that the required parameters depend on the used template and this is just an example command:
 <PRE>heat stack-create myStack -u https://raw.githubusercontent.com/SoneraCloud/openstack-heat-demo/master/heat_create_instance_linux.yml -P instance_name=testVM1 -P flavor_name=sonera.linux.tiny -P image_name=centos-7 -P keypair_name=my_heat_key -P security_group=my_sec_group -P network_name=my_net</PRE>
 
-You can list existing stacks using "heat stack-list" and show details of a stack using "heat stack-show |ID|".
+Another example using newer OpenStack CLI client:
+<PRE>openstack stack create -t https://raw.githubusercontent.com/SoneraCloud/openstack-heat-demo/master/heat_create_instance_linux.yml --parameter instance_name=testVM1 --parameter flavor_name=sonera.linux.tiny --parameter image_name=centos-7 --parameter keypair_name=my_heat_key --parameter security_group=my_sec_group --parameter network_name=my_net myStack</PRE>
+
+You can list existing stacks using "heat stack-list" (or "openstack stack list") and show details of a stack using "heat stack-show |ID|" (or "openstack stack show |ID|").
 
 Delete stack with "heat stack-delete |ID|"
 
