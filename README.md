@@ -4,6 +4,8 @@
 <H3>Overview</H3>
 This repository contains examples of how to use Heat templates in OpenStack. With Heat you can easily deploy a group of resources with one operation, and later remove all the related resources. In Heat terminology such group of resources is called a "stack". And example of a multi-instance stack could be for example deployment of a web-server and database server instance along with the required network connections.
 
+It is up to the creator of Heat templates to decide what resources are considered as baseline already existing in the cloud, and what resources will be created by the Heat template.
+
 <H3>Deploying stack</H3>
 Stacks can be deployed via Horizon GUI, OpenStack CLI or Ansible, giving the yaml-format Heat template as input. The templates typically have variables that are used to define for example name and flavor of instances. Input for the variables can be given via a separate "environment file", as command line parameters or interactively via Horizon GUI.
 
@@ -22,7 +24,7 @@ Another example using newer OpenStack CLI client:
 
 You can list existing stacks using "heat stack-list" (or "openstack stack list") and show details of a stack using "heat stack-show |ID|" (or "openstack stack show |ID|").
 
-Delete stack with "heat stack-delete |ID|"
+Delete stack with "heat stack-delete |ID|" or "openstack stack delete |ID|".
 
 <H4>Deploying stack with Ansible</H4>
 
