@@ -54,7 +54,7 @@ parameter_groups:
   - instance_name
   - flavor_name
   - image_name
-  - key_name
+  - keypair_name
   - security_group
   - network_name
   - floating_ip_pool
