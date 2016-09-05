@@ -31,6 +31,13 @@ Delete stack with "heat stack-delete |ID|" or "openstack stack delete |ID|".
 Refer to <A HREF='http://docs.ansible.com/ansible/os_stack_module.html' target='_blank'>Ansible module for using Heat</A>
 Note: Ansible os_stack module requires Ansible version 2.2 or later.
 
+<H3>Troubleshooting</H3>
+
+Stack deployment can fail if for example non-existing resources are referred by the template. Then the stack may end up in semiconfigured state so that only part of the requested resources exist. To troubleshoot what is wrong, you can inspect the error messages found by clicking the resources in <I>GUI->Project->Orchestration->Stacks</I> or CLI command "openstack heat stack show |ID|".
+After you find the root cause, delete the stack and try deployment again.
+
+About possible syntax errors in the template, one thing to keep in mind is that the Heat template specifications are continuously developed and older versions don't have all the features that newer versions support. The version of the template is written in the first line, for example "heat_template_version: 2014-10-16", but you cannot use newer version than the used OpenStack platform supports.
+
 <H3>References</H3>
 - <A HREF='http://docs.openstack.org/developer/heat/template_guide/' target="_blank">Heat template guide</A>
 - <A HREF='http://docs.openstack.org/cli-reference/heat.html' target='_blank'>Heat CLI reference</A>
