@@ -20,7 +20,7 @@ parameters:
     - custom_constraint: glance.image
     default:
 
-  security_group:
+  key_name:
     type: string
     description: SSH key pair.
     constraints:
@@ -49,7 +49,7 @@ resources:
       name: {get_param: instance_name}
       image: {get_param: image_name}
       flavor: {get_param: flavor_name}
-      key_name: juha_heat_key
+      key_name: {get_param: key_name}
       security_groups: [{ get_param: security_group }]
       networks:
         - {network: { get_param: network_name }}
