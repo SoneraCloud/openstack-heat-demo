@@ -1,5 +1,4 @@
 # openstack-heat-demo
-<B> *** This instruction is under construction *** </B>
 
 <H3>Overview</H3>
 This repository contains examples of how to use Heat templates in OpenStack. With Heat you can easily deploy a group of resources with one operation, and later remove all the related resources. In Heat terminology such group of resources is called a "stack". And example of a multi-instance stack could be for example deployment of a web-server and database server instance along with the required network connections.
