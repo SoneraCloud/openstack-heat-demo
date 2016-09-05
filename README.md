@@ -12,6 +12,8 @@ The stacks are managed in Horizon GUI via <I>Project->Orchestration->Stacks</I> 
 - Template Source = "Direct input": Type or copy&paste the template content on the dialogue.
 - Template Source = "URL": Let OpenStack controller fetch the file from an external HTTP server in the internet using URL given by the user. When the templates are stored in GitHub, they should be accessed with raw URL like https://raw.githubusercontent.com/SoneraCloud/openstack-heat-demo/master/heat_create_instance_linux.yml
 
+Deploying via CLI is done with "heat stack-create" command. Note that the required parameters depend on the used template and this is just an example command:
+<PRE>heat stack-create myStack -u https://raw.githubusercontent.com/SoneraCloud/openstack-heat-demo/master/heat_create_instance_linux.yml -P instance_name=testVM1 -P flavor_name=sonera.linux.tiny -P image_name=centos-7 -P keypair_name=my_heat_key -P security_group=my_sec_group -P network_name=my_net</PRE>
 
 
 <H3>References</H3>
