@@ -6,14 +6,24 @@ This repository contains examples of how to use Heat templates in OpenStack. Wit
 
 It is up to the creator of Heat templates to decide what resources are considered as baseline already existing in the cloud, and what resources will be created by the Heat template.
 
+<H3>Writing templates</H3>
+
+Documentation for Heat templates is found in <A HREF='http://docs.openstack.org/developer/heat/template_guide/' target="_blank">Heat template guide</A>
+
+One thing to keep in mind when writing the templates is that the Heat template specifications are continuously developed and older versions don't have all the features that newer versions support. The version of the template is written in the first line, for example "heat_template_version: 2014-10-16", but you cannot use newer version than the used OpenStack platform supports.
+
+Tip for usability via GUI: By default the template variables are shown in alphabetical order in the GUI dialogue. However with parameter <I>parameter_groups</I> you can explicitly define the order.
+
 <H3>Deploying stack</H3>
 Stacks can be deployed via Horizon GUI, OpenStack CLI or Ansible, giving the yaml-format Heat template as input. The templates typically have variables that are used to define for example name and flavor of instances. Input for the variables can be given via a separate "environment file", as command line parameters or interactively via Horizon GUI.
 
-<H4>Deploying with Horizon GUI</H4>
+<H4>Deploying stack with Horizon GUI</H4>
 The stacks are managed in Horizon GUI via <I>Project->Orchestration->Stacks</I> page. Clich the <I>Launch Stack</I> button to open a dialogue where you can give the template file and optionally the environment file. The files can be given using any of the following methods:
 - Template Source = "File": Upload the file via browser.
 - Template Source = "Direct input": Type or copy&paste the template content on the dialogue.
 - Template Source = "URL": Let OpenStack controller fetch the file from an external HTTP server in the internet using URL given by the user. When the templates are stored in GitHub, they should be accessed with raw URL like https://raw.githubusercontent.com/SoneraCloud/openstack-heat-demo/master/heat_create_instance_linux.yml
+
+The launch dialogue may have dropdown menus for some items if <I>custom_constraint</I> has been defined for a variable in the template. However all the resource types do not support constraints and then the only possibility is for the user to manually type the resource name.
 
 <H4>Deploying stack with CLI</H4>
 Deploying via CLI is done with "heat stack-create" command. Note that the required parameters depend on the used template and this is just an example command:
@@ -36,7 +46,6 @@ Note: Ansible os_stack module requires Ansible version 2.2 or later.
 Stack deployment can fail if for example non-existing resources are referred by the template. Then the stack may end up in semiconfigured state so that only part of the requested resources exist. To troubleshoot what is wrong, you can inspect the error messages found by clicking the resources in <I>GUI->Project->Orchestration->Stacks</I> or CLI command "openstack heat stack show |ID|".
 After you find the root cause, delete the stack and try deployment again.
 
-About possible syntax errors in the template, one thing to keep in mind is that the Heat template specifications are continuously developed and older versions don't have all the features that newer versions support. The version of the template is written in the first line, for example "heat_template_version: 2014-10-16", but you cannot use newer version than the used OpenStack platform supports.
 
 <H3>References</H3>
 - <A HREF='http://docs.openstack.org/developer/heat/template_guide/' target="_blank">Heat template guide</A>
