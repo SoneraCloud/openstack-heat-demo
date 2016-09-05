@@ -29,6 +29,7 @@ Delete stack with "heat stack-delete |ID|" or "openstack stack delete |ID|".
 <H4>Deploying stack with Ansible</H4>
 
 Refer to <A HREF='http://docs.ansible.com/ansible/os_stack_module.html' target='_blank'>Ansible module for using Heat</A>
+Note: Ansible os_stack module requires Ansible version 2.2 or later.
 
 <H3>References</H3>
 - <A HREF='http://docs.openstack.org/developer/heat/template_guide/' target="_blank">Heat template guide</A>
