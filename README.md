@@ -14,3 +14,11 @@ The stacks are managed in Horizon GUI via <I>Project->Orchestration->Stacks</I> 
 
 
 
+<H3>References</H3>
+- <A HREF='http://docs.openstack.org/developer/heat/template_guide/' target='_blank'>Heat template guide</A>
+- <A HREF='http://docs.openstack.org/cli-reference/heat.html' target='_blank'>Heat CLI reference</A>
+- <A HREF='http://docs.ansible.com/ansible/os_stack_module.html' target='_blank'>Ansible module for using Heat</A>
+
+
+
+
