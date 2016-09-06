@@ -70,6 +70,7 @@ resources:
       security_groups: [{ get_param: security_group }]
       networks:
         - {network: { get_param: network_name }}
+      user_data_format: RAW
 
   floating_ip:
     type: OS::Nova::FloatingIP
