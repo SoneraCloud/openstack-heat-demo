@@ -40,6 +40,21 @@ Delete stack with "heat stack-delete |ID|" or "openstack stack delete |ID|".
 Refer to <A HREF='http://docs.ansible.com/ansible/os_stack_module.html' target='_blank'>Ansible module for using Heat</A>
 Note: Ansible os_stack module requires Ansible version 2.2 or later.
 
+<H4>Using environment files</H4>
+
+To avoid having to type in the template parameters in OpenStack GUI or in the command line, you can use "environment file" as input for the stack creation operation. The environment file contains values for the template variables, referring to the variables with the same name as they have in the Heat template. Note that it is not possible to use names for all the resources but have to use IDs. Example of environment file:
+
+<PRE>
+parameters:
+  instance_name: Centos_testing
+  flavor_name: 10
+  image_name: c78af8b9-a64c-45ce-ade3-243d5d2dd146
+  keypair_name: my_key
+  security_group: my_sec_group
+  network_name: fb5dce25-ca06-4e78-b705-4cfc0cc6afed
+  floating_ip_pool: ext-net
+</PRE>
+
 <H3>Troubleshooting</H3>
 
 Stack deployment can fail if for example non-existing resources are referred by the template. Then the stack may end up in semiconfigured state so that only part of the requested resources exist. To troubleshoot what is wrong, you can inspect the error messages found by clicking the resources in <I>GUI->Project->Orchestration->Stacks</I> or CLI command "openstack heat stack show |ID|".
